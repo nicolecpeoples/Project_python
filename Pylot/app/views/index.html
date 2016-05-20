@@ -1,0 +1,36 @@
+{%  include 'templates/logged_out_header.html' %}
+    <div class="container">
+	<div class="content-lt">
+		<h3> Register </h3>
+		{% with messages = get_flashed_messages(with_categories=true) %}
+		  {% if messages %}
+		    <ul class=flashes>
+		    {% for login_errors, message in messages %}
+		      <li class="{{ login_errors }}">{{ message }}</li>
+		    {% endfor %}
+		    </ul>
+		  {% endif %}
+		{% endwith %}
+		<form action="/users/register" method="post">
+			<p> Name: <input type="text" name="full_name"> </p>
+			<p> Alias: <input type="text" name="alias"> </p>
+			<p> Email: <input type="text" name="email"> </p>
+			<p> Password: <input type="password" name="password"> </p>
+			<p> Confirm PW: <input type="password" name="confirm_password"> </p>
+			<p>Date of Birth: <input type="text" id="datepicker" name="dob" ></p>
+			<input type="submit" value="Register" class="btn">
+
+		</form>
+	</div>
+	<div class="content-rt">
+		<h3> Login </h3>
+		<form action="/users/login" method="post">
+			<p> Email: <input type="text" name="email"> </p>
+			<p> Password: <input type="password" name="password"> </p>
+			<input type="submit" value="Login" class="btn">
+		</form>
+	</div>
+</div><!-- container -->
+
+
+{%  include 'templates/footer.html' %}

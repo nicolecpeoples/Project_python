@@ -1,0 +1,38 @@
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Python Exam</title>
+        <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+        <link type="text/css" rel="stylesheet" href="/static/css/materialize.css"  media="screen,projection"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script type="text/javascript" src="/static/js/materialize.min.js"></script>
+    </head>
+<header id="hd">
+	<div class="container">
+	{% for user in show_current_user %}
+		<p> Posts by {{user['alias']}} </p>
+		<p> Count: {{user['count']}} </p>
+	{% endfor %}
+
+	<a href="/dashboard" class="btn"> Dashboard </a>
+	<a href="/logout" class="btn"> Logout </a>
+	</div>
+
+</header>
+
+<div class="container">
+	<div class="posts-wrap">
+		{% for quote in user_quotes %}
+		<div class="quote">
+			<p><span class="author">{{quote['quote_author']}}</span> {{quote['quote']}} </p>
+		</div>
+		{% endfor %}
+		<hr>
+	</div>
+</div>
+
+	
+{%  include 'templates/footer.html' %}

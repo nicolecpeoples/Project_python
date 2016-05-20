@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Python Exam</title>
+        <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+        <link type="text/css" rel="stylesheet" href="/static/css/materialize.css"  media="screen,projection"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script type="text/javascript" src="/static/js/materialize.min.js"></script>
+
+        
+    </head>
+    <body>
+        <header id="hd">
+            <div class="container">
+            <h3> Welcome {{ session['name']}}</h3>
+                <a href="/logout" class="btn"> Logout </a>
+            </div>
+
+        </header>

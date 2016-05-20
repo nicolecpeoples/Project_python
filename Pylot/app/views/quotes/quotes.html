@@ -1,0 +1,44 @@
+{%  include 'templates/logged_in_header.html' %}
+    
+<div class="container">
+	<div class="quote-wrap">
+		<h3> Quotable Quotes </h3>
+		{% for quote in other_quotes %}
+			<div class="quote">
+				<p><span class="author"> {{quote['quote_author']}}:</span> {{quote['quote']}} </p>
+				<span> Posted By:<a href="/users/{{quote['user_id']}}">{{quote['alias']}}</a></span> 
+				<form action="/add/fave" method="post">
+					<input type="hidden" name="fave_quote" value="{{quote['id']}}">
+					<input type="hidden" name="user_id" value="{{session['id']}}">
+					<input type="submit" value="Add to My List">
+				</form>
+			</div>
+		{% endfor %}
+
+	</div>
+	<div class="favorites-wrap">
+		<h4> Your Favorites </h4>
+		{% for quote in fave_quotes %}
+			<div class="quote">
+				<p><span class="author"> {{quote['quote_author']}}:</span> {{quote['quote']}} </p>
+				<span> Posted By:<a href="/users/{{quote['user_id']}}">{{quote['alias']}}</a></span> 
+				<form action="/remove/fave" method="post">
+					<input type="hidden" name="fave_quote" value="{{quote['id']}}">
+					<input type="hidden" name="user_id" value="{{session['id']}}">
+					<input type="submit" value="Remove from My List">
+				</form>
+			</div>
+		{% endfor %}
+
+	</div>
+	<div class="add_quote">
+		<h4> Contribute a Quote </h4>
+		<form action="/add/quote" method="post">
+			<input type="hidden" name="user_id" value="{{session['id']}}">
+			<input type="text" name="quote_author">
+			<textarea name="quote"></textarea>
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+</div>
+{%  include 'templates/footer.html' %}
